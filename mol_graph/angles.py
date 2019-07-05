@@ -1,6 +1,7 @@
 import os
 from rdkit import Chem
 from mol_graph.xyz2mol import read_xyz_file, xyz2mol
+import numpy as np
 
 
 def get_dihedral_deg(x):
@@ -27,4 +28,4 @@ def get_dihedral_deg(x):
     conf = mol.GetConformer()
 
     angle = Chem.rdMolTransforms.GetDihedralDeg(conf, atom_id_0, atom_0_neig, atom_1_neig, atom_id_1)
-    return angle
+    return np.abs(angle)
